@@ -22,7 +22,7 @@ function WatchDetails() {
 
   useEffect(() => {
     axios
-      .get(`http://127.0.0.1:8000/watches/${id}/`)
+      .get(`/watches/${id}/`)
       .then((res) => setWatch(res.data))
       .catch((err) => console.error(err));
   }, [id]);
@@ -75,7 +75,7 @@ function WatchDetails() {
 
             if (!watch) return <p className="text-center mt-5 text-white">Loading...</p>;
           const currentQty = cart.find((i) => i.id === watch.id)?.qty || 1;
-            const imageUrl = `http://127.0.0.1:8000${watch.image}`;
+            const imageUrl = `${watch.image}`;
             const message = `Hello, I want to buy this watch 
           Name: ${watch.name}
           Watch_ID:${watch.id}
@@ -225,7 +225,7 @@ function WatchDetails() {
                         
                             <div className="watch-image">
                             <Link to={`/watch/${watch.id}`}>
-                                <img  src={`http://127.0.0.1:8000${watch.image}`} alt={watch.name} />
+                                <img  src={`${watch.image}`} alt={watch.name} />
                             </Link>
 
                         <button className="button-2"onClick={() => handleAddToCart(watch)}>

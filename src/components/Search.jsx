@@ -9,7 +9,7 @@ function Search() {
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/watches/")
+      .get("/watches/")
       .then((res) => setWatches(res.data))
       .catch((err) => console.error(err));
   }, []);
@@ -59,7 +59,7 @@ function Search() {
                 <div className="col-md-4 mb-3" key={watch.id}>
                   <div className="card">
                     <img
-                      src={`http://127.0.0.1:8000${watch.image}`}
+                      src={`${watch.image}`}
                       className="card-img-top"
                       alt={watch.name}
                     />

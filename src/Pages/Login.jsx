@@ -18,7 +18,7 @@ function AuthForm() {
 
     try {
       if (mode === "register") {
-        const res = await axios.post("http://127.0.0.1:8000/register/", {
+        const res = await axios.post("/register/", {
           username,
           email,
           password1: password,
@@ -28,7 +28,7 @@ function AuthForm() {
         setMessage(res.data.message);
         setMode("login");
       } else if (mode === "login") {
-        const res = await axios.post("http://127.0.0.1:8000/login/", {
+        const res = await axios.post("/login/", {
           username,
           password,
         });
@@ -69,7 +69,7 @@ function AuthForm() {
         return;
       }
 
-      const res = await fetch("http://127.0.0.1:8000/api/cart/add/", {
+      const res = await fetch("/api/cart/add/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

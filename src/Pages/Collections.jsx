@@ -58,7 +58,7 @@ function Collections() {
   /* ================= API ================= */
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/watches/")
+      .get("/watches/")
       .then((res) => {
         setWatches(res.data);
         setSearchedWatches(res.data);
@@ -142,7 +142,7 @@ function Collections() {
                 <div className="watch-image">
                   <Link to={`/watch/${watch.id}`}>
                     <img
-                      src={`http://127.0.0.1:8000${watch.image}`}
+                      src={`${watch.image}`}
                       className="card-img-top"
                       alt={watch.name}
                     />
