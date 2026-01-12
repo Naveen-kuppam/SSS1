@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 function WatchDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-
   const [watch, setWatch] = useState(null);
   const [cart, setCart] = useState([]);
   const [address, setAddress] = useState({
@@ -22,7 +21,7 @@ function WatchDetails() {
 
   useEffect(() => {
     axios
-      .get(`/watches/${id}/`)
+      .get(`http://127.0.0.1:8000/watches/${id}/`)
       .then((res) => setWatch(res.data))
       .catch((err) => console.error(err));
   }, [id]);
@@ -75,7 +74,7 @@ function WatchDetails() {
 
             if (!watch) return <p className="text-center mt-5 text-white">Loading...</p>;
           const currentQty = cart.find((i) => i.id === watch.id)?.qty || 1;
-            const imageUrl = `${watch.image}`;
+            const imageUrl = `http://127.0.0.1:8000/watches/${watch.image}`;
             const message = `Hello, I want to buy this watch 
           Name: ${watch.name}
           Watch_ID:${watch.id}
@@ -85,7 +84,7 @@ function WatchDetails() {
           Delivery Address:
           House: ${address.house}, Area: ${address.area}, District: ${address.district}, State: ${address.state}, Pincode: ${address.pincode}`;
 
-  const whatsappLink = `https://wa.me/9959187411?text=${encodeURIComponent(message)}`;
+  const whatsappLink = `https://wa.me/9392655416?text=${encodeURIComponent(message)}`;
 
   
 
@@ -98,16 +97,16 @@ function WatchDetails() {
         
           <div className="col-md-6">
             <div className="image-box mb-3">
-              <img src={imageUrl} alt={watch.name} className="img-fluid rounded" />
+               <img src={`http://127.0.0.1:8000${watch.image}`} alt={watch.name}  className="img-fluid rounded" />
             </div>
             <div className="d-flex gap-2">
               {[...Array(3)].map((_, i) => (
                 <img
                   key={i}
-                  src={imageUrl}
+                  src={`http://127.0.0.1:8000${watch.image}`}
                   alt=""
                   className="img-thumbnail"
-                  style={{ width: "70px", cursor: "pointer" }}
+                  style={{ width: "50px", cursor: "pointer" }}
                 />
               ))}
             </div>
@@ -116,8 +115,8 @@ function WatchDetails() {
         
           <div className="col-md-6">
             <span className="badge bg-warning text-dark mb-2">NEW ARRIVAL</span>
-            <h2 className="product-title text-white">{watch.name}</h2>
-            <p className="text-secondary fs-4">{watch.brand} for {watch.gender}</p>
+            <h2 className="product-title text-white ">{watch.name}</h2>
+            <h3 className="text-secondary ">{watch.brand} for {watch.gender}</h3>
 
             <div className="d-flex align-items-center gap-3 mb-2">
               <span className="h4 text-white">₹{watch.price}</span>
@@ -130,10 +129,7 @@ function WatchDetails() {
                 </>
               )}
             </div>
-
-            <p className="text-secondary small">(inclusive of all taxes)</p>
-
-           
+            <h6 className="text-secondary small">(inclusive of all taxes)</h6>
             <div className="row">
               <div className="col">
             <div className="d-flex align-items-center gap-2 mb-3">
@@ -145,7 +141,6 @@ function WatchDetails() {
                 -
               </button>
               <span>{currentQty}</span>
-              
               <button
                 className="btn btn-outline-light btn-sm"
                 onClick={() => increment(watch.id)}
@@ -154,7 +149,7 @@ function WatchDetails() {
               </button>
               </div>
               <div className="col">
-             <h4 className=""><span className="text-secondary">Subtotal:</span> ₹{watch.price*currentQty}</h4>
+             <h4 className="text-secondary">Subtotal:<span className="text-light"> ₹{watch.price*currentQty}</span></h4>
             </div>
             </div>
             </div>
@@ -201,7 +196,6 @@ function WatchDetails() {
   </div>
 )}
 
-            
             <div className="row row-cols-2 g-2 mt-3 text-white">
               <div className="col">✔ 6 Months Warranty</div>
               <div className="col">✔ 7 Days Return</div>
@@ -224,13 +218,11 @@ function WatchDetails() {
 
                         
                             <div className="watch-image">
-                            <Link to={`/watch/${watch.id}`}>
-                                <img  src={`${watch.image}`} alt={watch.name} />
+                            <Link to={`${watch.id}`}>
+                                <img src={`http://127.0.0.1:8000${watch.image}`} alt={watch.name} />
                             </Link>
-
                         <button className="button-2"onClick={() => handleAddToCart(watch)}>
                                 <i className="bi bi-bag"></i> Add to Cart</button>
-
                 </div>
 
                
@@ -256,4 +248,4 @@ function WatchDetails() {
   );
 }
 
-export default WatchDetails;
+export default WatchDetails; 

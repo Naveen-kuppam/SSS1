@@ -34,7 +34,7 @@ function Collections() {
     }
 
     localStorage.setItem(cartKey, JSON.stringify(existingCart));
-    alert("Added to cart");
+
   };
 
   const handleAddToCart = (watch) => {
@@ -58,7 +58,7 @@ function Collections() {
   /* ================= API ================= */
   useEffect(() => {
     axios
-      .get("/watches/")
+      .get("http://127.0.0.1:8000/watches/")
       .then((res) => {
         setWatches(res.data);
         setSearchedWatches(res.data);
@@ -142,7 +142,7 @@ function Collections() {
                 <div className="watch-image">
                   <Link to={`/watch/${watch.id}`}>
                     <img
-                      src={`${watch.image}`}
+                      src={`http://127.0.0.1:8000/${watch.image}`}
                       className="card-img-top"
                       alt={watch.name}
                     />

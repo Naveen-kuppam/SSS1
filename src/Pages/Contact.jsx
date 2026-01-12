@@ -30,9 +30,9 @@ function Contact() {
         </div>
         <h4>Visit Us</h4>
         <p>
-          Nizampet,<br />
+          Nizampet
           Bachupally
-           in Hyderabad.<br/>
+           in Hyderabad.
         </p>
       </div>
     </div>
@@ -45,8 +45,7 @@ function Contact() {
         </div>
         <h4>Call Us</h4>
         <p>
-          +1 (555) 123-4567 <br />
-          +1 (555) 987-6543
+          +1 (555) 123-4567 
         </p>
       </div>
     </div>
@@ -58,8 +57,7 @@ function Contact() {
         </div>
         <h4>Email Us</h4>
         <p>
-          hello@sss-watches.com <br />
-          support@sss-watches.com
+          hello@sss-watches.com 
         </p>
       </div>
     </div>

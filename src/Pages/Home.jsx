@@ -8,7 +8,6 @@ import axios from 'axios';
 import '../Style/Home.css';
 import FooterSection from '../components/FooterSection';
 
-// ✅ ADD THIS (BACKEND BASE URL)
 const API_URL = import.meta.env.VITE_API_URL;
 
 function Home() {
@@ -43,19 +42,14 @@ function Home() {
     navigate("/Cart");
   };
 
-  // ✅ STEP 1: STATE MUST BE ARRAY
   const [watches, setWatches] = useState([]);
 
-  // ✅ STEP 2: FETCH FROM LIVE BACKEND (NO LOCALHOST)
+  /* ================= FETCH WATCHES FROM BACKEND ================= */
   useEffect(() => {
     axios
-      .get(`${API_URL}/watches/`)
+      .get("http://127.0.0.1:8000/watches/")
       .then((res) => {
-        // 🔴 If backend returns { watches: [...] }
-        setWatches(res.data.watches);
-
-        // 🟢 If backend returns plain array, use instead:
-        // setWatches(res.data);
+        setWatches(res.data);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -64,7 +58,7 @@ function Home() {
     <div>
       <Navbar />
 
-      {/* ------------------------------ Home ------------------------------ */}
+      {/* ------------------------------ HOME BANNER ------------------------------ */}
       <div className="home">
         <div className="home-content text-center">
           <h1 className="home-title">SSS WATCHES</h1>
@@ -83,7 +77,7 @@ function Home() {
         </div>
       </div>
 
-      {/* ------------------------------ Collections ------------------------------ */}
+      {/* ------------------------------ COLLECTIONS ------------------------------ */}
       <div id="Collection">
         <p className="collection-title text-warning">OUR COLLECTION</p>
         <h1 className="collection-heading text-center text-light">
@@ -93,19 +87,21 @@ function Home() {
         <div className="container">
           <div className="row text-center">
 
-            {/* ✅ STEP 3: SAFE MAP */}
             {Array.isArray(watches) &&
               watches.map((watch) => (
                 <div className="col-lg-3 col-md-6 mb-4" key={watch.id}>
                   <div className="watch-card">
                     <div className="watch-image">
+
+                      {/* ✅ frontend route */}
+        
                       <Link to={`/watch/${watch.id}`}>
-                        {/* ✅ IMAGE FROM BACKEND */}
                         <img
-                          src={`${API_URL}${watch.image}`}
+                          src={`http://127.0.0.1:8000${watch.image}`}
                           alt={watch.name}
                         />
                       </Link>
+
 
                       <button
                         className="button-2"
@@ -134,7 +130,7 @@ function Home() {
         </div>
       </div>
 
-      {/* ------------------------------ Features ------------------------------ */}
+      {/* ------------------------------ FEATURES ------------------------------ */}
       <div className="container bg-dark py-5 mt-5">
         <div className="row text-center justify-content-center">
 
