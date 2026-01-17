@@ -69,16 +69,16 @@ function Navbar() {
          <ul className="navbar-nav ms-lg-auto text-center align-items-center">
 
   <li className="nav-item">
-    <a className="nav-link" href="/Search/">
+    <Link className="nav-link" to="/Search">
       <FaSearch />
-    </a>
+    </Link>
   </li>
 
   {!user && (
     <li className="nav-item">
-      <a className="nav-link" href="/Login/">
+      <Link className="nav-link" to="/Login">
         <FaUser />
-      </a>
+      </Link>
     </li>
   )}
 
@@ -94,10 +94,11 @@ function Navbar() {
   )}
 
   <li className="nav-item">
-    <a className="nav-link" href="/Cart/">
+    <Link className="nav-link" to="/Cart">
       <FaShoppingBag />
       {data > 0 && <span className="cart-count">{data}</span>}
-    </a>
+      </Link>
+    
   </li>
 
 </ul>

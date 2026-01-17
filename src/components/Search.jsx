@@ -8,8 +8,8 @@ function Search() {
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/watches/")
+    axios.get(`${import.meta.env.VITE_API_URL}/watches/`)
+
       .then((res) => setWatches(res.data))
       .catch((err) => console.error(err));
   }, []);
