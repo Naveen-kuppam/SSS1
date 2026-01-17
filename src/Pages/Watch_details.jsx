@@ -20,8 +20,8 @@ function WatchDetails() {
   const [showAddress, setShowAddress] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`http://127.0.0.1:8000/watches/${id}/`)
+
+      axios.get(`${import.meta.env.VITE_API_URL}/watches/${id}/`)
       .then((res) => setWatch(res.data))
       .catch((err) => console.error(err));
   }, [id]);

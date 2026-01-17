@@ -3,7 +3,7 @@ import { FaSearch, FaUser, FaShoppingBag, FaSignOutAlt } from "react-icons/fa";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../Style/Navbar.css'
-
+import { Link } from "react-router-dom";
 
 
 function Navbar() {
@@ -53,15 +53,17 @@ function Navbar() {
             <li className="nav-item">
               <a className="nav-link" href="/">Home</a>
             </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/Shop/">Shop</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/About/">About</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="/Contact/">Contact</a>
-            </li>
+                 <li className="nav-item">
+                    <Link className="nav-link" to="/shop">Shop</Link>
+                   </li>
+
+                   <li className="nav-item">
+                        <Link className="nav-link" to="/about">About</Link>
+                    </li>
+
+                     <li className="nav-item">
+                        <Link className="nav-link" to="/contact">Contact</Link>
+                     </li>
           </ul>
 
          <ul className="navbar-nav ms-lg-auto text-center align-items-center">

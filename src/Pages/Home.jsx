@@ -46,8 +46,7 @@ function Home() {
 
   /* ================= FETCH WATCHES FROM BACKEND ================= */
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/watches/")
+    axios.get(`${import.meta.env.VITE_API_URL}/watches/`)
       .then((res) => {
         setWatches(res.data);
       })
